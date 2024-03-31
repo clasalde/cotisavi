@@ -9,8 +9,11 @@ export function TaskContextProvider(props) {
     setTasksList([
       ...tasksList,
       {
-        title: newTask.title,
         id: tasksList.length,
+        img: newTask.img,
+        marca: newTask.marca,
+        modelo: newTask.modelo,
+        version: newTask.version,
         description: newTask.description,
       },
     ]);
