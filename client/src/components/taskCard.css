@@ -1,0 +1,10 @@
+.imageContainer {
+  height: 200px;
+  width: 100%;
+}
+
+.carImage {
+  padding: 10px;
+  height: 100%;
+  object-fit: cover;
+}

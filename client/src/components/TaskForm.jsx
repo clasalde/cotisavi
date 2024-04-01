@@ -28,38 +28,41 @@ function TaskForm() {
 
   return (
     <div className="max-w-md mx-auto">
-      <form onSubmit={handleSubmit} className="bg-slate-800 p-10 mb-4">
-        <h1 className="text-2xl font-bold text-white mb-3 bg-slate-800">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-slate-800 p-10 mb-4 rounded-md"
+      >
+        <h1 className="text-2xl font-bold text-white mb-3 bg-slate-800 box">
           Nuevo Auto
         </h1>
-        <div className="flex gap-2">
-          <div>
+        <div className="flex gap-3 bg-slate-800">
+          <div className="bg-slate-800">
             <input
               value={marca}
               placeholder="Marca"
               onChange={(e) => setMarca(e.target.value)}
-              className="bg-slate-200 p-3 w-full mb-2"
+              className="bg-slate-200 p-3 w-full mb-2 rounded-md"
               autoFocus
             />
             <input
               value={modelo}
               placeholder="Modelo"
               onChange={(e) => setModelo(e.target.value)}
-              className="bg-slate-200 p-3 w-full mb-2"
+              className="bg-slate-200 p-3 w-full mb-2 rounded-md"
             />
           </div>
-          <div>
+          <div className="bg-slate-800">
             <input
               value={version}
               placeholder="Versión"
               onChange={(e) => setVersion(e.target.value)}
-              className="bg-slate-200 p-3 w-full mb-2"
+              className="bg-slate-200 p-3 w-full mb-2 rounded-md"
             />
             <input
               value={img}
               placeholder="Ruta imagen"
               onChange={(e) => setImg(e.target.value)}
-              className="bg-slate-200 p-3 w-full mb-2"
+              className="bg-slate-200 p-3 w-full mb-2 rounded-md"
             />
           </div>
         </div>
@@ -70,7 +73,7 @@ function TaskForm() {
           rows="2"
           placeholder="Descripción"
           onChange={(e) => setDescription(e.target.value)}
-          className="bg-slate-200 p-3 w-full mb-2"
+          className="bg-slate-200 p-3 w-full mb-2 rounded-md"
         ></textarea>
         <button className="bg-indigo-600 px-3 py-1 text-white hover:bg-indigo-500 rounded-md">
           Cargar Auto

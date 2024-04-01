@@ -23,12 +23,18 @@ export function TaskContextProvider(props) {
     setTasksList(tasksList.filter((task) => task.id !== taskId));
   };
 
+  const editTask = (taskId) => {
+    alert("falta definir funcion")
+  };
+
+
   return (
     <TaskContext.Provider
       value={{
         tasksList,
         createNewTask,
         deleteTask,
+        editTask,
       }}
     >
       {props.children}

@@ -1,7 +1,11 @@
-import express, { urlencoded } from "express";
+import dotenv from "dotenv";
+dotenv.config();
+const PORT = process.env.PORT || 8080;
 
+import express from "express";
 const app = express();
-const PUERTO = 8080;
+
+import "./database.js"
 
 //Middlewares
 app.use(express.json());
@@ -13,6 +17,6 @@ app.get("/", (req, res) => {
 });
 
 //Listen
-app.listen(PUERTO, () => {
-  console.log(`Escuchando en el puerto: ${PUERTO}`);
+app.listen(PORT, () => {
+  console.log(`Escuchando en el puerto: ${PORT}`);
 });
