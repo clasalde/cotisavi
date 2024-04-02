@@ -1,4 +1,5 @@
 import "../components/carCard.css";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 function CarCard({ car }) {
@@ -36,9 +37,9 @@ function CarCard({ car }) {
       <p className="flex flex-wrap text-gray-400 text-md bg-gray-800 h-24">
         {car.description}
       </p>
-      <div className="flex gap-4 bg-gray-800">
+      <div className="flex justify-center gap-4 bg-gray-800">
         <button
-          className="bg-red-500 px-2 py-1 rounded-md hover:bg-red-400 w-20"
+          className="bg-red-800 px-2 py-1 rounded-md hover:bg-red-500 w-20"
           onClick={handleDelete}
         >
           Eliminar
@@ -46,6 +47,12 @@ function CarCard({ car }) {
         <button className="bg-violet-900 px-2 py-1 rounded-md hover:bg-violet-400 w-20">
           Editar
         </button>
+
+        <Link to="/customer">
+          <button className="bg-lime-700 px-2 py-1 rounded-md hover:bg-lime-500 w-20">
+            Cotizar
+          </button>
+        </Link>
       </div>
     </div>
   );

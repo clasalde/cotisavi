@@ -92,7 +92,7 @@ function CarForm() {
             />
             <input
               value={img}
-              placeholder="Ruta imagen"
+              placeholder="URL de la imagen"
               onChange={(e) => setImg(e.target.value)}
               className="bg-slate-200 p-3 w-full mb-2 rounded-md"
             />
