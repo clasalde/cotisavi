@@ -1,3 +1,6 @@
-.cargar {
-    font-size: 30px;
+.planesText {
+  font-size: 35px;
+  color: white;
+  text-align: center;
+  margin: 20px 0 20px 0;
 }

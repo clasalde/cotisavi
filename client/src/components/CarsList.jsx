@@ -1,3 +1,4 @@
+import NavBar from "./NavBar";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import CarCard from "./CarCard";
@@ -12,28 +13,28 @@ function CarsList() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/cars");
+      const response = await axios.get("http://localhost:8080/api/cars");
       setCarsList(response.data.payload.docs);
+
+      if (carsList.length === 0) {
+        return <h1>No existen planes en stock</h1>;
+      }
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
-  if (carsList.length !== 0) {
-    return (
-      <div className="grid grid-cols-4 gap-6">
+  return (
+    <>
+      <NavBar />
+      <h1 className="uppercase font-light planesText">Planes Vigentes</h1>
+      <div className="container m-auto grid grid-cols-4 gap-5">
         {carsList.map((car, index) => (
           <CarCard key={index} car={car} />
         ))}
       </div>
-    );
-  } else {
-    return (
-      <h1 className="flex justify-center m-auto mt-10 text-white font-thin uppercase cargar">
-        No existen planes cargados
-      </h1>
-    );
-  }
+    </>
+  );
 }
 
 export default CarsList;

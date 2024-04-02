@@ -1,0 +1,18 @@
+nav {
+  height: 7vh;
+}
+
+ul {
+  align-items: center;
+}
+
+.homePage {
+  color: white;
+  font-size: 30px;
+}
+
+.hero {
+  height: 93vh;
+  width: 100vw;
+  object-fit: cover;
+}
