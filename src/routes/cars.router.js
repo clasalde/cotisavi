@@ -6,7 +6,7 @@ const carManager = new CarManager();
 
 router.get("/cars", async (req, res) => {
   try {
-    const { limit = 10, page = 1, sort, query } = req.query;
+    const { limit = 100, page = 1, sort, query } = req.query;
     const cars = await carManager.getCars({
       limit: parseInt(limit),
       page: parseInt(page),

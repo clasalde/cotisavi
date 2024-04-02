@@ -1,25 +1,10 @@
 import CarModel from "../models/car.model.js";
 
 class CarManager {
-
   //ADD NEW CAR
-  async addCar({
-    marca,
-    modelo,
-    version,
-    img,
-    description,
-    price,
-  }) {
+  async addCar({ marca, modelo, version, img, description, price }) {
     try {
-      if (
-        !marca ||
-        !modelo ||
-        !version ||
-        !img ||
-        !description ||
-        !price
-      ) {
+      if (!marca || !modelo || !version || !img || !description || !price) {
         console.log("All fields are mandatory");
         return;
       }
@@ -114,8 +99,7 @@ class CarManager {
     }
   }
 
-
-//UPDATE CAR
+  //UPDATE CAR
   async updateCar(id, updatedCar) {
     try {
       const updateCar = await CarModel.findByIdAndUpdate(id, updatedCar);
@@ -131,7 +115,6 @@ class CarManager {
       throw error;
     }
   }
-
 
   //DELETE CAR
   async deleteCar(id) {
