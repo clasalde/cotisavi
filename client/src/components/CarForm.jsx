@@ -1,29 +1,37 @@
-import { useState, useContext } from "react";
-import { TaskContext } from "../context/TaskContext.jsx";
+import { useState } from "react";
+import axios from "axios";
 
-function TaskForm() {
+function CarForm() {
   const [marca, setMarca] = useState("");
   const [modelo, setModelo] = useState("");
   const [version, setVersion] = useState("");
   const [img, setImg] = useState("");
   const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
 
-  const { createNewTask } = useContext(TaskContext);
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    createNewTask({
-      marca: marca,
-      modelo: modelo,
-      version: version,
-      img: img,
-      description: description,
-    });
-    setMarca("");
-    setModelo("");
-    setVersion("");
-    setImg("");
-    setDescription("");
+    try {
+      const response = await axios.post("http://localhost:5000/api/cars", {
+        marca,
+        modelo,
+        version,
+        img,
+        description,
+        price,
+      });
+
+      console.log("Datos guardados correctamente");
+
+      setMarca("");
+      setModelo("");
+      setVersion("");
+      setImg("");
+      setDescription("");
+      setPrice("");
+    } catch (error) {
+      console.error("Error al conectar con el servidor:", error);
+    }
   };
 
   return (
@@ -32,8 +40,8 @@ function TaskForm() {
         onSubmit={handleSubmit}
         className="bg-slate-800 p-10 mb-4 rounded-md"
       >
-        <h1 className="text-2xl font-bold text-white mb-3 bg-slate-800 box">
-          Nuevo Auto
+        <h1 className="text-xl text-white mb-3 bg-slate-800 box uppercase font-thin text-center">
+          Cargar nuevo Plan
         </h1>
         <div className="flex gap-3 bg-slate-800">
           <div className="bg-slate-800">
@@ -50,8 +58,6 @@ function TaskForm() {
               onChange={(e) => setModelo(e.target.value)}
               className="bg-slate-200 p-3 w-full mb-2 rounded-md"
             />
-          </div>
-          <div className="bg-slate-800">
             <input
               value={version}
               placeholder="Versión"
@@ -59,28 +65,34 @@ function TaskForm() {
               className="bg-slate-200 p-3 w-full mb-2 rounded-md"
             />
             <input
-              value={img}
-              placeholder="Ruta imagen"
-              onChange={(e) => setImg(e.target.value)}
+              value={price}
+              placeholder="Precio"
+              onChange={(e) => setPrice(e.target.value)}
               className="bg-slate-200 p-3 w-full mb-2 rounded-md"
             />
           </div>
         </div>
+        <input
+          value={img}
+          placeholder="Ruta imagen"
+          onChange={(e) => setImg(e.target.value)}
+          className="bg-slate-200 p-3 w-full mb-2 rounded-md"
+        />
         <textarea
           value={description}
           name="description"
           cols="20"
-          rows="2"
+          rows="3"
           placeholder="Descripción"
           onChange={(e) => setDescription(e.target.value)}
           className="bg-slate-200 p-3 w-full mb-2 rounded-md"
         ></textarea>
         <button className="bg-indigo-600 px-3 py-1 text-white hover:bg-indigo-500 rounded-md">
-          Cargar Auto
+          Cargar
         </button>
       </form>
     </div>
   );
 }
 
-export default TaskForm;
+export default CarForm;

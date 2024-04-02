@@ -9,7 +9,6 @@ class CarManager {
     version,
     img,
     description,
-    vigente,
     price,
   }) {
     try {
@@ -19,7 +18,6 @@ class CarManager {
         !version ||
         !img ||
         !description ||
-        !vigente ||
         !price
       ) {
         console.log("All fields are mandatory");
@@ -39,7 +37,6 @@ class CarManager {
         version,
         img,
         description,
-        vigente,
         price,
       });
 

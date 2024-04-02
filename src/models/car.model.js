@@ -20,10 +20,6 @@ const carSchema = new mongoose.Schema({
   img: {
     type: String,
   },
-  vigente: {
-    type: Boolean,
-    required: true,
-  },
   price: {
     type: Number,
     required: true
