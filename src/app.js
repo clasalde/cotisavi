@@ -2,19 +2,19 @@ import dotenv from "dotenv";
 dotenv.config();
 const PORT = process.env.PORT || 8080;
 
+import carsRouter from "./routes/cars.router.js";
+
 import express from "express";
 const app = express();
 
-import "./database.js"
+import "./database.js";
 
 //Middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Rutas
-app.get("/", (req, res) => {
-  res.send("Estamos conectados con el Backend");
-});
+app.use("/api", carsRouter);
 
 //Listen
 app.listen(PORT, () => {
