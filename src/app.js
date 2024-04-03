@@ -4,6 +4,7 @@ const PORT = process.env.PORT;
 import cors from "cors";
 
 import carsRouter from "./routes/cars.router.js";
+import costumersRouter from "./routes/customers.router.js";
 
 import express from "express";
 const app = express();
@@ -17,6 +18,7 @@ app.use(cors());
 
 //Rutas
 app.use("/api", carsRouter);
+app.use("/api", costumersRouter);
 
 //Listen
 app.listen(PORT, () => {

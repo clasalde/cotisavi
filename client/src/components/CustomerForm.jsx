@@ -2,16 +2,22 @@ import NavBar from "./NavBar";
 import { useState } from "react";
 import axios from "axios";
 import "./customerForm.css";
+// import Cotizacion from "./Cotizacion";
 
-function CarForm() {
+function CustomerForm() {
   const [nombre, setNombre] = useState("");
   const [apellido, setApellido] = useState("");
   const [telefono, setTelefono] = useState("");
   const [mail, setMail] = useState("");
   const [dinero, setDinero] = useState("");
   const [interes, setInteres] = useState("");
+  // const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = async (e) => {
+  // if (submitted) {
+  //   return <Cotizacion nombre={nombre} apellido={apellido} />;
+  // }
+
+  const handleCustomerSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post("http://localhost:8080/api/customers", {
@@ -29,6 +35,7 @@ function CarForm() {
       setMail("");
       setDinero("");
       setInteres("");
+      // setSubmitted(true);
     } catch (error) {
       console.error("Error al conectar con el servidor:", error);
     }
@@ -42,8 +49,8 @@ function CarForm() {
           datos del prospecto
         </h1>
         <form
-          onSubmit={handleSubmit}
           className="bg-slate-800 p-8 mb-4 rounded-md"
+          onSubmit={handleCustomerSubmit}
         >
           <div className="gap-3 bg-slate-800">
             <input
@@ -86,8 +93,8 @@ function CarForm() {
               onChange={(e) => setInteres(e.target.value)}
               className="bg-slate-200 p-3 w-full mb-2 rounded-md"
             ></textarea>
-            <button className="bg-lime-700 px-3 py-1 text-white hover:bg-lime-500 rounded-md">
-              Ir a Cotización
+            <button className="bg-lime-700 text-white px-2 py-1 rounded-md hover:bg-lime-500 w-40">
+              Generar Cotización
             </button>
           </div>
         </form>
@@ -96,4 +103,4 @@ function CarForm() {
   );
 }
 
-export default CarForm;
+export default CustomerForm;
